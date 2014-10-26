@@ -205,7 +205,15 @@
 				>
 			</File>
 			<File
+				RelativePath=".\MsgDefineInc.h"
+				>
+			</File>
+			<File
 				RelativePath=".\MsgFields.h"
+				>
+			</File>
+			<File
+				RelativePath=".\MsgInitInc.h"
 				>
 			</File>
 		</Filter>

@@ -1,8 +1,8 @@
 #include "Msg.h"
+#include "MsgInitInc.h"
 
 FieldMeta Msg::_fields[] = {
-	FieldMeta("MsgType", 6),
-	FieldMeta("MsgLen", 8),
+	MsgHeaderFields
 	FieldMeta("MsgEndTag", 0)			
 };
 

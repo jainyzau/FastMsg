@@ -2,6 +2,8 @@
 #define _MSG_H_
 #include "FieldMeta.h"
 #include "Field.h"
+#include "MsgFields.h"
+#include "MsgDefineInc.h"
 
 class Msg
 {
@@ -11,8 +13,7 @@ public:
 	static std::string get_field( const char* aField, size_t aLen, FieldValueAlign aAlign = AlignRight, char aPadding = ' ' );
 	static void set_field( char* aField, size_t aLen, const std::string& aNewValue, FieldValueAlign aAlign = AlignRight, char aPadding = ' ');
 
-	Field<6> MsgType;
-	Field<8> MsgLen;
+	MsgHeaderFields
 	static FieldMeta _fields[];
 };
 

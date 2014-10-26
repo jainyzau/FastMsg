@@ -1,6 +1,10 @@
 #ifndef _MSG_FIELDS_H_
 #define _MSG_FIELDS_H_
 
+#define MsgHeaderFields					\
+	MsgField(MsgType, 6)				\
+	MsgField(MsgLen ,8)
+
 #define MsgAdminFields					\
 	MsgField(ExchangeCode, 1)			\
 	MsgField(MarketCode, 2)				\

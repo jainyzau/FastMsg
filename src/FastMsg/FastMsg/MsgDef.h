@@ -3,9 +3,7 @@
 #include "Msg.h"
 #include "Field.h"
 #include "MsgFields.h"
-
-#define MsgField(Name, Len) Field<Len> Name;
-#define MsgFieldEx(Name, Len, Align, Padding) Field<Len, Align, Padding> Name;
+#include "MsgDefineInc.h"
 
 MsgDefine(MsgAdmin, Msg);
 MsgDefine(MsgOperationStart, MsgAdmin);
