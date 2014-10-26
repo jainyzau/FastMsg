@@ -220,6 +220,10 @@
 				RelativePath=".\MsgInitInc.h"
 				>
 			</File>
+			<File
+				RelativePath=".\Slice.h"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="资源文件"

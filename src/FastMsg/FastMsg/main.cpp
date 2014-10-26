@@ -1,5 +1,6 @@
 #include "MsgDef.h"
 #include <iostream>
+#include <ctime>
 
 using std::cout;
 using std::endl;
@@ -42,6 +43,17 @@ int main()
 	lMsgNewOrder.VirtualServerNo.set("J61A0H");
 	lMsgNewOrder.Price.set("199999999");
 	cout << lMsgNewOrder.to_s() << endl;
+
+	time_t lTime;
+	time(&lTime);
+	cout << lTime << endl;
+	for(int i = 0; i < 1000000; ++i)
+	{
+		lMsgNewOrder.to_s();
+	}
+
+	time(&lTime);
+	cout << lTime << endl;
 	cout << std::string((const char*)&lMsgNewOrder, sizeof(lMsgNewOrder)) << endl;
 
 

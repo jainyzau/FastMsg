@@ -48,3 +48,27 @@ void BasicField::set_field( char* aField, size_t aLen, const std::string& aNewVa
 		memcpy(aField, aNewValue.c_str(), aLen);
 	}
 }
+
+Slice BasicField::get_field_s( const char* aField, size_t aLen, FieldValueAlign aAlign /*= AlignRight*/, char aPadding /*= ' ' */ )
+{
+	if (aAlign == AlignRight)
+	{
+		const char* p = aField;
+		while(aLen > 0 && *p++ == aPadding) --aLen;
+		if (aLen > 0)
+		{
+			return Slice(p-1, aLen);
+		}
+	}
+	else
+	{
+		const char* p = aField + aLen - 1;
+		while (aLen > 0 && *p-- == aPadding) --aLen;
+		if (aLen > 0)
+		{
+			return Slice(aField, aLen);
+		}
+	}
+
+	return Slice();
+}
