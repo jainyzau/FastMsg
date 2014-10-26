@@ -10,8 +10,6 @@ class Msg
 public:
 	std::string to_s() const { return self_to_s((const char*)this, _fields); };	
 	static std::string self_to_s(const char* aMsg, const FieldMeta* aFields);
-	static std::string get_field( const char* aField, size_t aLen, FieldValueAlign aAlign = AlignRight, char aPadding = ' ' );
-	static void set_field( char* aField, size_t aLen, const std::string& aNewValue, FieldValueAlign aAlign = AlignRight, char aPadding = ' ');
 
 	MsgHeaderFields
 	static FieldMeta _fields[];
