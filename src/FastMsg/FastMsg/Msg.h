@@ -1,7 +1,5 @@
 #ifndef _MSG_H_
 #define _MSG_H_
-#include "FieldMeta.h"
-#include "Field.h"
 #include "MsgFields.h"
 #include "MsgDefineInc.h"
 
