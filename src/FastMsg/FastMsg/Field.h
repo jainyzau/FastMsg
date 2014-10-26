@@ -21,7 +21,7 @@ public:
 template<size_t FieldLen, FieldValueAlign Align, char Padding>
 void Field<FieldLen, Align, Padding>::set( const std::string aValue )
 {
-	memcpy(value, aValue.c_str(), FieldLen);
+	Msg::set_field(value, FieldLen, aValue, Align, Padding);
 }
 template<size_t FieldLen, FieldValueAlign Align, char Padding>
 std::string Field<FieldLen, Align, Padding>::get() const

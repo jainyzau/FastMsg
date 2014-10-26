@@ -6,32 +6,43 @@ using std::endl;
 
 int main()
 {
+
+	cout << "Msg Size:" << sizeof(Msg) << endl;
+	cout << "MsgAdmin Size:" << sizeof(MsgAdmin) << endl;
+	cout << "MsgOperationStart Size:" << sizeof(MsgOperationStart) << endl;
+	cout << "MsgNewOrder Size:" << sizeof(MsgNewOrder) << endl;
+	cout << "======================" << endl;
+
 	MsgAdmin lMsgAdmin;
-	lMsgAdmin.MsgType.set(" Admin");
-	lMsgAdmin.MsgLen.set("      14");
+	lMsgAdmin.MsgType.set("Admin");
+	lMsgAdmin.MsgLen.set("14");
 
 	cout << lMsgAdmin.to_s() << endl;
-	cout << lMsgAdmin.MsgType.get() << endl;
+	cout << "======================" << endl;
 
 	MsgOperationStart lMsgOperationStart;
 	lMsgOperationStart.MsgType.set("OperSt");
-	lMsgOperationStart.MsgLen.set("      69");
+	lMsgOperationStart.MsgLen.set("69");
 	lMsgOperationStart.VirtualServerNo.set("J61A0G");
-	lMsgOperationStart.ARNSeqNo.set("00000003");
-	lMsgOperationStart.ERNSeqNo.set("00000002");
+	lMsgOperationStart.ARNSeqNo.set("3");
+	lMsgOperationStart.ERNSeqNo.set("2");
 	lMsgOperationStart.ProxyVirtualServerNo_1.set("J61A0H");
-	lMsgOperationStart.ProxyARNSeqNo_1.set("00000004");
-	lMsgOperationStart.ProxyERNSeqNo_1.set("00000005");
+	lMsgOperationStart.ProxyARNSeqNo_1.set("4");
+	lMsgOperationStart.ProxyERNSeqNo_1.set("5");
 
 	cout << lMsgOperationStart.to_s() << endl;
+	cout << "======================" << endl;
 
-	cout << sizeof(MsgOperationStart) << endl;
-	cout << sizeof(lMsgAdmin) << endl;
 
 	MsgNewOrder lMsgNewOrder;
-	lMsgNewOrder.Price.set("199999999.0000");
-	cout << lMsgNewOrder.Price.get() << endl;
-	cout << sizeof(MsgNewOrder) << endl;
+	lMsgNewOrder.MsgType.set("A111");
+	lMsgNewOrder.MsgLen.set("37");
+	lMsgNewOrder.ExchangeCode.set("1");
+	lMsgNewOrder.MarketCode.set("11");
+	lMsgNewOrder.VirtualServerNo.set("J61A0H");
+	lMsgNewOrder.Price.set("199999999");
+	cout << lMsgNewOrder.to_s() << endl;
+	cout << std::string((const char*)&lMsgNewOrder, sizeof(lMsgNewOrder)) << endl;
 
 
 	return 0;

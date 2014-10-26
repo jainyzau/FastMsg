@@ -1,16 +1,17 @@
 #ifndef _MSG_FIELDS_H_
 #define _MSG_FIELDS_H_
 
-#define MsgAdminFields			\
-	MsgField(MsgType, 6)		\
-	MsgField(MsgLen, 8)		
+#define MsgAdminFields					\
+	MsgField(ExchangeCode, 1)			\
+	MsgField(MarketCode, 2)				\
+	MsgField(VirtualServerNo, 6)		
+
 
 #define MsgNewOrderFields					\
-	MsgFieldEx(Price, 14, AlignLeft, '0')
+	MsgFieldEx(Price, 14, AlignRight, '0')
 
 
 #define MsgOperationStartFields			\
-	MsgField(VirtualServerNo, 6)		\
 	MsgField(ARNSeqNo, 8)				\
 	MsgField(ERNSeqNo, 8)				\
 	MsgField(ProxyVirtualServerNo_1, 6)	\
