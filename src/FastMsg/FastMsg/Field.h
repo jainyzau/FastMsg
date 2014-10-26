@@ -1,10 +1,32 @@
 #ifndef _FIELD_H_
 #define _FIELD_H_
 #include <string>
-struct Field
+#include "FieldMeta.h"
+#include "Msg.h"
+
+template<size_t FieldLen, FieldValueAlign Align = AlignRight, char Padding = ' '>
+class Field
 {
-	Field(const std::string aName, size_t aLen): m_Name(aName), m_Len(aLen){}
-	std::string m_Name;
-	size_t m_Len;
+public:
+
+	std::string get() const;
+	void set(const std::string aValue);
+	char value[FieldLen];
+
+	static const size_t _FieldLen = FieldLen;
+	static const FieldValueAlign _Align = Align;
+	static const char _Padding = Padding;
 };
+
+template<size_t FieldLen, FieldValueAlign Align, char Padding>
+void Field<FieldLen, Align, Padding>::set( const std::string aValue )
+{
+	memcpy(value, aValue.c_str(), FieldLen);
+}
+template<size_t FieldLen, FieldValueAlign Align, char Padding>
+std::string Field<FieldLen, Align, Padding>::get() const
+{
+	return Msg::get_field(value, _FieldLen, _Align, _Padding);
+}
+
 #endif

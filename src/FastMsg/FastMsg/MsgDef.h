@@ -1,29 +1,14 @@
 #ifndef _MSG_DEF_H_
 #define _MSG_DEF_H_
-#include <string>
 #include "Msg.h"
-#include "field.h"
+#include "Field.h"
+#include "MsgFields.h"
 
-#define MsgField(Name, Len) char Name[Len];
+#define MsgField(Name, Len) Field<Len> Name;
+#define MsgFieldEx(Name, Len, Align, Padding) Field<Len, Align, Padding> Name;
 
-#define DefineMsg(aMsgName, aMsgBase)																	\
-class aMsgName: public aMsgBase																			\
-{																										\
-public:																									\
-	aMsgName() { memset(this, 0x20, sizeof(aMsgName));}													\
-	std::string to_s() const { return aMsgBase::to_s() + Msg::self_to_s((const char*)this, _fields); }	\
-	aMsgName##Fields;																					\
-private:																								\
-	static Field _fields[];																				\
-};
+MsgDefine(MsgAdmin, Msg);
+MsgDefine(MsgOperationStart, MsgAdmin);
+MsgDefine(MsgNewOrder, MsgAdmin);
 
-#define MsgInit(aMsgName)				\
-	Field aMsgName::_fields[] = {		\
-	aMsgName##Fields					\
-	MsgField(MsgEndTag, 0)				\
-	};
-
-DefineMsg(MsgAdmin, Msg);
-DefineMsg(MsgOperationStart, MsgAdmin);
-DefineMsg(MsgTest, MsgOperationStart);
 #endif
